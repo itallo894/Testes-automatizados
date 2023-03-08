@@ -20,7 +20,7 @@ const { Pool } = require('pg')
 module.exports = (on, config) => {
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
-  const configJson=(config.configFile)
+  const configJson= require(config.configFile)
 
   const pool = new Pool(configJson.dbConfig)
 
