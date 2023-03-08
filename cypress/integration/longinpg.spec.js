@@ -116,7 +116,7 @@ context('Quando a senha for muito curta', function () {
 
 })
 
-context.only('Quando nenhum um campo e preenchido', function () {
+context('Quando nenhum um campo e preenchido', function () {
     const alertMessages = [
         'Nome é obrigatório',
         'E-mail é obrigatório',
