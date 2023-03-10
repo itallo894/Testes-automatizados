@@ -1,4 +1,4 @@
-
+import {el} from './elementes'
 import header from "../../components/header"
 class DashPage {
     constructor() {
