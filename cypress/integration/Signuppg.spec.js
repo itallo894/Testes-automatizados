@@ -66,7 +66,7 @@ context('Quando o email for incorreto', function () {
         signupPage.go()
         signupPage.form(user)
         signupPage.submit()
-        signupPage.alertHavetext('Informe um email válido')
+        signupPage.alert.haveText('Informe um email válido')
 
 
     })
@@ -94,7 +94,7 @@ context('Quando a senha for muito curta', function () {
         })
     })
     afterEach(function () {
-        signupPage.alertHavetext('Pelo menos 6 caracteres')
+        signupPage.alert.haveText('Pelo menos 6 caracteres')
 
     })
 
@@ -117,7 +117,7 @@ context('Quando nenhum um campo e preenchido', function () {
     })
     alertMessages.forEach(function (alert) {
         it('deve exibir' + alert.toLowerCase(), function () {
-            signupPage.alertHavetext(alert)
+            signupPage.alert.haveText(alert)
         })
 
     })

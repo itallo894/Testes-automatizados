@@ -3,6 +3,7 @@
 import loginPage from '../support/pages/login'
 import dashPage from '../support/pages/dashbord'
 
+
 describe('login', function () {
     context('Se o usúario for bom acessar sem falha', function () {
 
@@ -56,6 +57,8 @@ describe('login', function () {
             loginPage.go()
             loginPage.form(user)
             loginPage.submit()
+            const message = 'Ocorreu um erro ao fazer login, verifique suas credenciais.'
+            loginPage.toast.shouldHaveText(message)
             cy.wait(5000)
 
 
@@ -63,6 +66,41 @@ describe('login', function () {
 
 
 
+
+
+
+
+    })
+
+    context('Quando o email é inválido', function () {
+        const emails = [
+            'itallo.com',
+            '@',
+            '@gmail.com',
+            'itallo$.com.br',
+            'itallo.samurai.bs'
+
+        ]
+
+        before(function () {
+            loginPage.go()
+
+        })
+
+
+
+        emails.forEach(function (email) {
+            it('Não deve cadastrar com o email :' + email, function () {
+                const user = { email: email, password: 'Itallo321' }
+
+
+
+                loginPage.form(user)
+                loginPage.submit()
+                loginPage.alert.haveText('Informe um email válido')
+            })
+
+        })
 
 
 

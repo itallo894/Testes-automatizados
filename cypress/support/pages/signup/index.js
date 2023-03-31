@@ -2,11 +2,13 @@
 
 import { el } from './elements'
 import toast from '../../components/toast'
+import alert from '../../components/alert'
 
 class SignupPage {
 
     constructor() {
         this.toast = toast
+        this.alert = alert
     }
 
 
@@ -30,11 +32,7 @@ class SignupPage {
 
     }
 
-    alertHavetext(expectText) {
-        cy.contains('.alert-error', expectText)
-            .should('be.visible')
-    }
-
+    
 
 
 
