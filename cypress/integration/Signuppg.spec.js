@@ -1,19 +1,21 @@
 
 
 
+
 import signupPage from "../support/pages/signup"
 //usa importação para deixa o codigo menor.
 describe('Cadastro', function () {
 
-    context('Quando o usuario é novato', function () {
-        const user = {
-            name: 'Itallo de sousa',
-            email: 'itallo@samuraib225s.com',
-            password: 'Itallo321'
-        }
+    before(function(){
+        cy.fixture('itallo').then(function(itallo){
+            this.itallo = itallo
+        })
+    })
 
+    context.only('Quando o usuario é novato', function () {
+       
         before(function () {
-            cy.task('removeUser', user.email)
+            cy.task('removeUser', this.itallo.email)
                 .then(function (result) {
                     console.log(result)
                 })
@@ -23,7 +25,7 @@ describe('Cadastro', function () {
         it('Deve preencher com sucesso.', function () {
 
             signupPage.go()
-            signupPage.form(user)
+            signupPage.form(this.itallo)
             signupPage.submit()
             signupPage.toast.shouldHaveText('Agora você se tornou um(a) Samurai, faça seu login para ver seus agendamentos!')
         })
